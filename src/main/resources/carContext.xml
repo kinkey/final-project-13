@@ -8,6 +8,6 @@
         <property name="name" value="bemeve"></property>
     </bean>
     <bean id="primaMeaMasina2" class="com.project.dixml.Car">
-
+        <constructor-arg index="0" value="mercedes"></constructor-arg>
     </bean>
 </beans>

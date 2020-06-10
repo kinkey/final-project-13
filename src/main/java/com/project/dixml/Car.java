@@ -4,6 +4,13 @@ public class Car {
 
     public String name;
 
+    public Car(String name) {
+        this.name = name;
+    }
+
+    public Car() {
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -11,7 +18,6 @@ public class Car {
     public String getName() {
         return name;
     }
-
 
     @Override
     public String toString() {
