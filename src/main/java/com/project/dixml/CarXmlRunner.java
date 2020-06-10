@@ -2,6 +2,9 @@ package com.project.dixml;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarXmlRunner {
 
     public static void main(String[] args) {
@@ -9,18 +12,13 @@ public class CarXmlRunner {
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext("carContext.xml");
 
-        //Car firstCar = new Car();
-        //Car fristCar2 = new Car();
+        Parcare parcare = context.getBean("parcare", Parcare.class);
 
-        Car primameaMasina = context.getBean("primaMeaMasina", Car.class);
-        Car primameaMasina2 = context.getBean("primaMeaMasina2", Car.class);
-        Car primameaMasina22 = context.getBean("primaMeaMasina2", Car.class);
-        Car primameaMasina23 = context.getBean("primaMeaMasina2", Car.class);
+        System.out.println(parcare);
 
-        System.out.println(primameaMasina);
+        List listaDeMasini = context.getBean("listaDeMasini", List.class);
 
-        System.out.println(primameaMasina2);
-        System.out.println(primameaMasina22);
-        System.out.println(primameaMasina23);
+        System.out.println(listaDeMasini);
+
     }
 }
