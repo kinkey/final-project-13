@@ -2,28 +2,37 @@ package com.project.diannot;
 
 import com.project.dixml.Car;
 import com.project.dixml.Parcare;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
 @ComponentScan("com.project")
+@PropertySource("classpath:application.properties")
 public class CarConfiguration {
+
+    @Value("${car.name}")
+    private String carName;
+
+    @Value("${car.brand.name}")
+    private String brandNames;
 
     @Bean
     public Car primaMeaMasina(){
         Car car = new Car();
-        car.setName("bemeve");
+        car.setName(brandNames);
         return car;
     }
 
     @Bean
     public Car aDouaMasina(){
         Car car = new Car();
-        car.setName("mercedes");
+        car.setName(carName);
         return car;
     }
 

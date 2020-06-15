@@ -1,12 +1,11 @@
 package com.project.dixml;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Car {
 
-    @Value("dacia")
+
     public String name;
 
     public Car(String name) {
