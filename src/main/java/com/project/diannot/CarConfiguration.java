@@ -11,9 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
-@ComponentScan("com.project")
-@PropertySource("classpath:application.properties")
+
 public class CarConfiguration {
 
     @Value("${car.name}")

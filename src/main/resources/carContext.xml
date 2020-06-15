@@ -6,24 +6,4 @@
 
     <!--<import resource="altContext.xml" />-->
 
-    <bean id="parcare" class="com.project.dixml.Parcare">
-        <constructor-arg name="carInParking" ref="listaDeMasini"/>
-    </bean>
-
-    <bean name="listaDeMasini" class="java.util.ArrayList">
-        <constructor-arg>
-            <list>
-                <ref bean="primaMeaMasina" />
-                <ref bean="primaMeaMasina2" ></ref>
-
-            </list>
-        </constructor-arg>
-    </bean>
-
-    <bean id="primaMeaMasina" class="com.project.dixml.Car">
-        <property name="name" value="bemeve"></property>
-    </bean>
-    <bean id="primaMeaMasina2" class="com.project.dixml.Car">
-        <constructor-arg index="0" value="mercedes"></constructor-arg>
-    </bean>
 </beans>
