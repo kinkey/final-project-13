@@ -13,7 +13,7 @@ import java.util.List;
 
 @Configuration
 @ComponentScan("com.project")
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:anotherConfig.properties")
 public class CarConfiguration {
 
     @Value("${car.name}")
@@ -21,6 +21,17 @@ public class CarConfiguration {
 
     @Value("${car.brand.name}")
     private String brandNames;
+
+    @Value("${car.brand.year}")
+    private Integer brandYear;
+
+    public String getCarName() {
+        return carName;
+    }
+
+    public Integer getBrandYear() {
+        return brandYear;
+    }
 
     @Bean
     public Car primaMeaMasina(){
