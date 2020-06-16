@@ -3,9 +3,14 @@ package com.project.basicDi;
 public class Bec {
 
     Energie energie;
+    String tipFabricatieBec;
 
     public Bec(Energie energie) {
         this.energie = energie;
+    }
+
+    public Bec(String tipFabricatieBec){
+        this.tipFabricatieBec = tipFabricatieBec;
     }
 
     public void aprinde(){
@@ -23,7 +28,8 @@ public class Bec {
     @Override
     public String toString() {
         return "Bec{" +
-                "energie=" + energie.toString() +
+                "energie=" + energie +
+                ", tipFabricatieBec='" + tipFabricatieBec + '\'' +
                 '}';
     }
 }

@@ -1,12 +1,22 @@
 package com.project.dixml;
 
+import com.project.basicDi.Bec;
+import com.project.basicDi.EnergieCuantica;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 @Component
 public class Car {
 
+    @Autowired
+    private Bec beculMeu;
+    //private Bec beculMeu = new Bec(new EnergieCuantica());
 
-    public String name;
+
+    public String name = "unNume222";
 
     public Car(String name) {
         this.name = name;
@@ -26,7 +36,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "name='" + name + '\'' +
+                "beculMeu=" + beculMeu +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

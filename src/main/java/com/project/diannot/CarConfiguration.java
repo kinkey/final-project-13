@@ -1,68 +1,26 @@
 package com.project.diannot;
 
-import com.project.dixml.Car;
-import com.project.dixml.Parcare;
-import org.springframework.beans.factory.annotation.Value;
+import com.project.basicDi.Bec;
+import com.project.basicDi.EnergieCuantica;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 @ComponentScan("com.project")
-@PropertySource("classpath:anotherConfig.properties")
+//com.project
+//com.project.bla.bla.bla
+//com.project.some.other.class
 public class CarConfiguration {
 
-    @Value("${car.name}")
-    private String carName;
-
-    @Value("${car.brand.name}")
-    private String brandNames;
-
-    @Value("${car.brand.year}")
-    private Integer brandYear;
-
-    public String getCarName() {
-        return carName;
-    }
-
-    public Integer getBrandYear() {
-        return brandYear;
-    }
 
     @Bean
-    public Car primaMeaMasina(){
-        Car car = new Car();
-        car.setName(brandNames);
-        return car;
+    public Bec bec(){
+        Bec b = new Bec(new EnergieCuantica());
+        System.out.println("Fac becul pentru a fi pus in lighean");
+        return b;
     }
-
-    @Bean
-    public Car aDouaMasina(){
-        Car car = new Car();
-        car.setName(carName);
-        return car;
-    }
-
-    @Bean
-    public List<Car> getCars(){
-        List<Car> c = new ArrayList<Car>();
-        c.add(primaMeaMasina());
-        c.add(aDouaMasina());
-        return  c;
-    }
-
-
-
-
-    @Bean
-    public Parcare parcare(){
-        return new Parcare();
-    }
-
 
 
 }

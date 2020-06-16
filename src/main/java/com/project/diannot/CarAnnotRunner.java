@@ -1,29 +1,25 @@
 package com.project.diannot;
 
+import com.project.basicDi.Bec;
 import com.project.dixml.Car;
 import com.project.dixml.Parcare;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+
 
 public class CarAnnotRunner {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(CarConfiguration.class);
 
-        Parcare parcare = context.getBean("parcare", Parcare.class);
 
-        System.out.println(parcare);
 
-        CarConfiguration cf1 = context.getBean("carConfiguration", CarConfiguration.class);
-
-        CarConfiguration cff = new CarConfiguration();
-
-        Car car = cff.primaMeaMasina();
-
-        Car carFromContext = cf1.primaMeaMasina();
-
-        System.out.println("masina din context:" + carFromContext);
-
-        System.out.println("masina nu din context" + car);
+        ExpressionParser parser = new SpelExpressionParser();
+        Expression exp = parser.parseExpression("new String('hello world')");
+        String message = exp.getValue(String.class);
+        String message2 = message.toUpperCase();
+        System.out.println(message2);
     }
 }
