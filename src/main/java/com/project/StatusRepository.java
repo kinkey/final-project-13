@@ -22,5 +22,11 @@ public interface StatusRepository extends JpaRepository<Status, Integer> {
             nativeQuery = true)
     Status findUserByStatusNative(Integer status);
 
+    // select * from status where statusName like '%n' and statusId > 5
+    // spring data jpa genereaza query-uri pe baza numelor metodelor
+
+    List<Status> findFirstByStatusNameLikeAndStatusIdLes(String like, Integer number);
+
+
 
 }
