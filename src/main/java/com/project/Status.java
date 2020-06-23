@@ -11,38 +11,39 @@ public class Status {
     }
 
     public Status(String statusName) {
-        this.statusName = statusName;
+        this.numeDeStatus = statusName;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "statusId")
-    Integer statusId;
+    Integer idDeStatus;
 
     @Column(name = "statusName", nullable = false)
-    String statusName;
+    String numeDeStatus;
+
 
     @Override
     public String toString() {
         return "Status{" +
-                "statusId=" + statusId +
-                ", statusName='" + statusName + '\'' +
+                "idDeStatus=" + idDeStatus +
+                ", numeDeStatus='" + numeDeStatus + '\'' +
                 '}';
     }
 
-    public Integer getStatusId() {
-        return statusId;
+    public Integer getIdDeStatus() {
+        return idDeStatus;
     }
 
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
+    public void setIdDeStatus(Integer idDeStatus) {
+        this.idDeStatus = idDeStatus;
     }
 
-    public String getStatusName() {
-        return statusName;
+    public String getNumeDeStatus() {
+        return numeDeStatus;
     }
 
-    public void setStatusName(String statusName) {
-        this.statusName = statusName;
+    public void setNumeDeStatus(String numeDeStatus) {
+        this.numeDeStatus = numeDeStatus;
     }
 }
