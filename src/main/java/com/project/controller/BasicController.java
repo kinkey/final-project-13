@@ -3,12 +3,14 @@ package com.project.controller;
 import com.project.Status;
 import com.project.StatusRepository;
 import com.project.dto.StatusDTO;
+import com.project.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,60 @@ public class BasicController {
 
     @Autowired
     StatusRepository statusRepository;
+
+    @Autowired
+    StatusService statusService;
+
+    @GetMapping(value = "/statuses")
+    public ResponseEntity<List<StatusDTO>> statusList2(
+            @RequestParam(name = "order", required = false) String order,
+            @RequestParam(name = "idGreaterThan", required = false) Integer idGreaterThan) {
+
+        List<StatusDTO> dtos = statusService.getStatusesByParams(order, idGreaterThan);
+
+        return new ResponseEntity<List<StatusDTO>>(dtos, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/statuses/acceptStatuses")
+    public ResponseEntity<List<Status>> blalsaaad(@RequestBody List<StatusDTO> statuses){
+
+        List<Status> statusEntityList = new ArrayList<>();
+
+        for(StatusDTO sdto: statuses){
+            statusEntityList.add(new Status(sdto.getName()));
+        }
+
+        statusRepository.saveAll(statusEntityList);
+
+        return new ResponseEntity<List<Status>>(statusEntityList, HttpStatus.ACCEPTED);
+
+    }
+
+    @PostMapping(value = "/strings/acceptStrings")
+    public void blalsad(@RequestBody List<String> strings){
+
+        System.out.println(strings);
+        System.out.println(strings.get(0));
+        System.out.println(strings.get(1));
+    }
+
+
+    @GetMapping(value = "/statuses/list")
+    public ResponseEntity<List<StatusDTO>> statusList() {
+        List<StatusDTO> statuses = statusService.getStatuses();
+
+        return new ResponseEntity<List<StatusDTO>>(statuses, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/strings/{specialStrings}")
+    public void asdad(@PathVariable String specialStrings){
+
+        System.out.println(specialStrings);
+
+        for (String x : specialStrings.split(",")){
+            System.out.println(x);
+        }
+    }
 
     @GetMapping(value = "/statuses/{statusId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StatusDTO> statuses(@PathVariable Integer statusId) {

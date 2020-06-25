@@ -9,6 +9,11 @@ public class StatusDTO {
     String name;
     LocalDateTime currentDate;
 
+    public StatusDTO(String name) {
+        this.name = name;
+        this.currentDate = LocalDateTime.now();
+    }
+
     public StatusDTO(Integer id, String name) {
         this.id = id;
         this.name = name;
